@@ -1,0 +1,142 @@
+# Feedback & Roasts - Easter Egg Candidates
+
+## Overview
+
+This document tracks funny criticisms, roasts, and memorable feedback that can be turned into Easter eggs hidden throughout The Dark Void. When players discover these, they're finding pieces of the game's development history!
+
+---
+
+## Feedback Log
+
+| Date | Source | Original Feedback | In-Game Idea | Status |
+|------|--------|-------------------|--------------|--------|
+| 2025-01-10 | Example | "Logo looks like a 5 year old drew it" | Item: "Child Prodigy Art Piece" - *"A local artist claims their 5-year-old could do better. They were right."* | Idea |
+| | | | | |
+| | | | | |
+| | | | | |
+
+---
+
+## Status Key
+
+| Status | Meaning |
+|--------|---------|
+| **Idea** | Just logged, not designed yet |
+| **Designed** | Know where/how it will appear |
+| **Implemented** | In the game |
+| **Cut** | Decided not to use |
+
+---
+
+## Implementation Categories
+
+### Item Descriptions
+Hidden flavor text on discoverable items.
+
+```
+Example:
+Item Name: "Vintage Corporate Logo (Circa 2025)"
+Description: "Critics said a 5-year-old could do better. 
+             The artist upgraded their skills. 
+             They're 6 now."
+```
+
+### Hoverable Tooltips
+Easter eggs when players hover over certain UI elements or objects.
+
+```
+Example:
+[Hover over a glitchy terminal]
+"Error 5Y34R-OLD: Artistic integrity not found"
+```
+
+### Loading Screen Tips
+Fake "tips" that are actually roasts.
+
+```
+Example:
+"Pro tip: If the graphics look bad, squint harder."
+"Fun fact: This loading screen took longer to make than the logo."
+```
+
+### NPC Dialogue
+Characters reference the feedback in conversation.
+
+```
+Example:
+Street Vendor: "I used to sell art, but some corpo said 
+               my work looked like a child made it. 
+               Now I sell weapons. Much better reviews."
+```
+
+### Collectible Dev Notes
+Hidden "developer notes" players can find scattered around.
+
+```
+Example:
+[Crumpled note in a trash can]
+"Note to self: Logo feedback - 'looks like a 5 year old drew it'
+ Action item: Find a talented 6 year old"
+```
+
+### Achievement Names
+Achievements that reference development struggles.
+
+```
+Example:
+Achievement: "Art School Dropout"
+Description: "Discovered 10 pieces of 'child-like' art"
+
+Achievement: "Constructive Criticism" 
+Description: "Found all hidden developer roasts"
+```
+
+### Riptide Collective Specific
+The Riptide Collective would LOVE roasting corporate stuff.
+
+```
+Example:
+Riptide Hacker: "You see that HydrUS logo? My kid 
+                could hack a better design. Actually, 
+                she did. We use it for target practice."
+```
+
+---
+
+## Ideas Backlog
+
+Space for quick notes before fully logging:
+
+- 
+- 
+- 
+- 
+
+---
+
+## Rules for Inclusion
+
+1. **Keep it fun** - Roasts should be playful, not mean-spirited
+2. **Self-deprecating is great** - Laughing at ourselves is endearing
+3. **Credit optional** - Can reference source anonymously or by name (with permission)
+4. **Fits the world** - Should feel like it belongs in The Dark Void's universe
+5. **Reward exploration** - Best ones should be hidden, not obvious
+
+---
+
+## How to Add New Entries
+
+1. Log the original feedback exactly as received
+2. Note the source (person, platform, etc.)
+3. Brainstorm in-game implementation
+4. Set status to "Idea"
+5. Update status as it progresses
+
+---
+
+## Version History
+
+| Date | Change |
+|------|--------|
+| 2025-01-10 | Document created |
+| | |

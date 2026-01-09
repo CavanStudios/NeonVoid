@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeonVoid Tech Arsenal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e0e0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00d9ff;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .tech-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .tech-card:hover::before {
+            left: 100%;
+        }
+
+        .tech-card:hover {
+            border-color: #00d9ff;
+            box-shadow: 0 0 25px rgba(0, 217, 255, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .tech-card.active {
+            border-color: #00ff88;
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        .tech-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .tech-title {
+            color: #00d9ff;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .tech-tagline {
+            color: #aaa;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .detail-panel {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid #00d9ff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 20px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        .detail-panel.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .detail-title {
+            color: #00ff88;
+            font-size: 2em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .timeline-badge {
+            background: rgba(0, 217, 255, 0.2);
+            color: #00d9ff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.5em;
+            border: 1px solid #00d9ff;
+        }
+
+        .tech-section {
+            margin-bottom: 25px;
+        }
+
+        .tech-section h3 {
+            color: #00d9ff;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .tech-section p, .tech-section ul {
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .tech-section ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .tech-section li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .world-tip {
+            background: rgba(0, 255, 136, 0.1);
+            border-left: 4px solid #00ff88;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+
+        .world-tip strong {
+            color: #00ff88;
+        }
+
+        .close-btn {
+            background: rgba(255, 0, 100, 0.3);
+            border: 1px solid #ff0064;
+            color: #ff0064;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            float: right;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 0, 100, 0.5);
+            box-shadow: 0 0 15px rgba(255, 0, 100, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚡ NeonVoid Tech Arsenal ⚡</h1>
+        <p class="subtitle">Realistic near-future technologies for your dystopian corporate universe</p>
+
+        <div class="tech-grid" id="techGrid"></div>
+
+        <div id="detailPanel" class="detail-panel"></div>
+    </div>
+
+    <script>
+        const techData = [
+            {
+                id: 'biotech',
+                icon: '🧬',
+                title: 'Biotech & Enhancement',
+                tagline: 'Neural interfaces and genetic modification',
+                timeline: '2030-2050',
+                sections: [
+                    {
+                        title: 'Neural Interfaces',
+                        content: `<p>We're already seeing <span class="highlight">brain-computer interfaces</span> (BCIs) like Neuralink's N1 implant entering human trials. By 2040-2050:</p>
+                        <ul>
+                            <li><strong>Direct neural communication:</strong> Subvocal thought-to-text without speaking, enabling silent commands and communication</li>
+                            <li><strong>Sensory augmentation:</strong> Enhanced vision spectrums (infrared, UV), audio range expansion, proprioceptive feedback for machinery</li>
+                            <li><strong>Memory augmentation:</strong> External storage linked to biological memory, instant recall of data, skill download possibilities</li>
+                            <li><strong>Corporate control vector:</strong> Mandatory "productivity enhancers" that also monitor thoughts, emotional states, and compliance</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'Genetic Modifications',
+                        content: `<p>CRISPR and gene therapy are advancing rapidly. Realistic developments:</p>
+                        <ul>
+                            <li><strong>Disease resistance:</strong> Engineered immunity to common illnesses, reducing healthcare costs (and creating dependency)</li>
+                            <li><strong>Performance optimization:</strong> Enhanced muscle efficiency, oxygen utilization, cognitive processing speed</li>
+                            <li><strong>Longevity treatments:</strong> Telomere extension, cellular repair mechanisms, possibly 150+ year lifespans for the wealthy</li>
+                            <li><strong>Class stratification:</strong> "Natural" humans vs. enhanced corporate employees, genetic branding by corporation</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'For NeonVoid',
+                        content: `<div class="world-tip">
+                            <strong>💡 Worldbuilding Hook:</strong> HydrUS Corp could offer "upgrade packages" as benefits - neural productivity suites, endurance mods for physical labor divisions, or "executive cognitive enhancements." Each modification could include DRM-like restrictions or subscription models. Workers become literally incompatible with competitors' systems.
+                        </div>`
+                    }
+                ]
+            },
+            {
+                id: 'space-habitats',
+                icon: '🏙️',
+                title: 'Space Habitats',
+                tagline: 'Living beyond Earth',
+                timeline: '2035-2060',
+                sections: [
+                    {
+                        title: 'Orbital Stations',
+                        content: `<p>Building on ISS technology with commercial expansion:</p>
+                        <ul>
+                            <li><strong>Rotating habitats:</strong> O'Neill cylinders or Stanford torus designs creating artificial gravity through rotation (1-2 RPM)</li>
+                            <li><strong>Modular construction:</strong> 3D-printed components, asteroid-mined materials, self-assembling structures</li>
+                            <li><strong>Biospheres:</strong> Closed-loop ecosystems with hydroponic farms, water recycling at 95%+ efficiency</li>
+                            <li><strong>Population scale:</strong> Initially hundreds, scaling to thousands by 2060</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'Lunar & Mars Colonies',
+                        content: `<p>Permanent settlements using <span class="highlight">in-situ resource utilization (ISRU)</span>:</p>
+                        <ul>
+                            <li><strong>Lava tubes:</strong> Natural underground caverns providing radiation shielding and stable temperatures</li>
+                            <li><strong>Regolith construction:</strong> Sintered lunar/Martian soil for building materials, 3D-printed habitats</li>
+                            <li><strong>Ice mining:</strong> Water extraction from polar regions for life support, fuel production (electrolysis to H₂/O₂)</li>
+                            <li><strong>Greenhouse domes:</strong> Pressurized agricultural zones, possibly with genetically modified crops for efficiency</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'For NeonVoid',
+                        content: `<div class="world-tip">
+                            <strong>💡 Worldbuilding Hook:</strong> Corporate habitats as company towns in space. HydrUS's lunar operations might have "Aqua Quarter" housing tiers based on employee rank. Legacy Dynamics mining asteroids with workers in rotating can-habitats. Uplink controlling the communication infrastructure means they control who speaks to Earth. Indentured labor contracts to pay off "transport debt."
+                        </div>`
+                    }
+                ]
+            },
+            {
+                id: 'propulsion',
+                icon: '🚀',
+                title: 'Propulsion Systems',
+                tagline: 'Getting around the solar system',
+                timeline: '2030-2070',
+                sections: [
+                    {
+                        title: 'Nuclear Propulsion',
+                        content: `<p>Most realistic near-term option for deep space:</p>
+                        <ul>
+                            <li><strong>Nuclear thermal rockets (NTR):</strong> Heating propellant via reactor, 2x efficiency of chemical rockets. Mars in 3-4 months vs. 6-9</li>
+                            <li><strong>Nuclear electric propulsion (NEP):</strong> Reactor powers ion drives, extremely efficient for cargo. Slow acceleration but massive delta-v</li>
+                            <li><strong>Fission fragment drives:</strong> Direct use of fission products for thrust (more speculative but theoretically sound)</li>
+                            <li><strong>Development timeline:</strong> NTR testing by 2030s, operational missions 2040s</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'Advanced Ion & Plasma Drives',
+                        content: `<p>Already in use (Dawn spacecraft), scaling up:</p>
+                        <ul>
+                            <li><strong>VASIMR (Variable Specific Impulse Magnetoplasma Rocket):</strong> Plasma heated by radio waves, magnetic nozzle. Adjustable thrust/efficiency</li>
+                            <li><strong>Hall effect thrusters:</strong> Current tech, improving. Could reach 0.01g continuous thrust by 2050</li>
+                            <li><strong>Realistic capabilities:</strong> Earth to Mars in 39 days (with enough power), asteroid belt accessible</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'Laser & Beamed Energy',
+                        content: `<p>External power for spacecraft:</p>
+                        <ul>
+                            <li><strong>Laser-thermal propulsion:</strong> Ground/orbital lasers heat onboard propellant, no reactor needed on ship</li>
+                            <li><strong>Laser sails:</strong> Ultra-thin reflective sails pushed by laser arrays, potential for 0.2c (20% light speed) with massive infrastructure</li>
+                            <li><strong>Microwave beaming:</strong> Power transmission to ships, enabling high-thrust electric drives without heavy reactors</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'For NeonVoid',
+                        content: `<div class="world-tip">
+                            <strong>💡 Worldbuilding Hook:</strong> Corps control the propulsion infrastructure. Uplink operates the laser-sail network - you need their "permission packet" to access beam-pushing stations. HydrUS manufactures the fusion reactors (hydrogen, naturally). Pirates and independents stuck with slower chemical or early ion tech. Speed and range directly correlate to corporate affiliation.
+                        </div>`
+                    }
+                ]
+            },
+            {
+                id: 'spacecraft',
+                icon: '🛸',
+                title: 'Spacecraft Design',
+                tagline: 'Ships that actually work',
+                timeline: '2030-2060',
+                sections: [
+                    {
+                        title: 'Realistic Ship Architecture',
+                        content: `<p>Physics-compliant designs:</p>
+                        <ul>
+                            <li><strong>Torch ships:</strong> Constant 0.01-0.1g acceleration "torches." Rotating habitat sections for artificial gravity during coast phases</li>
+                            <li><strong>Cyclers:</strong> Aldrin cyclers for Earth-Mars routes. Stations in perpetual orbit, ships rendezvous. No fuel wasted on deceleration/acceleration</li>
+                            <li><strong>Tethered rotation:</strong> Two modules connected by cable, spinning for gravity. Separate when maneuvering needed</li>
+                            <li><strong>Shielding:</strong> Water tanks as radiation barriers, polyethylene layers, possibly electromagnetic deflectors for solar wind</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'Ship Classes by Function',
+                        content: `<p>Specialized vessels for different roles:</p>
+                        <ul>
+                            <li><strong>Personnel shuttles:</strong> Fast, 0.05-0.1g capable, rotating sections. 30-90 day transit times</li>
+                            <li><strong>Bulk haulers:</strong> Slow ion tugs, 0.001g constant thrust. Months-long trajectories but massive cargo capacity</li>
+                            <li><strong>Mining drones:</strong> Autonomous, AI-piloted. Solar-electric for inner system, RTG for outer asteroids</li>
+                            <li><strong>Defense/enforcement:</strong> Missile platforms, laser point-defense, kinetic kill vehicles. Space combat = long-range missiles</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'For NeonVoid',
+                        content: `<div class="world-tip">
+                            <strong>💡 Worldbuilding Hook:</strong> Corporate ships are visually branded - HydrUS vessels have flowing, organic curves (wave aesthetic). Legacy ships are brutal, utilitarian blocks. Uplink craft bristle with antennae. Employee shuttles are cramped, exec yachts have full 1g rotating rings. Repo teams in fast-burn interceptors hunting defaulted ships.
+                        </div>`
+                    }
+                ]
+            },
+            {
+                id: 'physics-tech',
+                icon: '⚛️',
+                title: 'Physics & Energy',
+                tagline: 'Power and fundamental tech',
+                timeline: '2030-2080',
+                sections: [
+                    {
+                        title: 'Fusion Power',
+                        content: `<p>The holy grail, potentially arriving 2040s-2050s:</p>
+                        <ul>
+                            <li><strong>Tokamak reactors:</strong> ITER proving concept now, commercial plants by 2045-2050. Deuterium-tritium fuel</li>
+                            <li><strong>Inertial confinement:</strong> Laser fusion (NIF achieved ignition 2022). Potential for smaller, modular reactors</li>
+                            <li><strong>Aneutronic fusion:</strong> Proton-boron or D-He3 reactions. Cleaner, harder to achieve. He3 from lunar mining?</li>
+                            <li><strong>Impact:</strong> Effectively unlimited energy, enabling massive orbital infrastructure, deep space missions, energy abundance</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'Advanced Materials',
+                        content: `<p>Nanomaterials and metamaterials:</p>
+                        <ul>
+                            <li><strong>Graphene & carbon nanotubes:</strong> 100x stronger than steel, incredible conductivity. Space elevator tethers, ultra-light structures</li>
+                            <li><strong>Programmable matter:</strong> Materials that change properties on command. Adaptive armor, morphing structures</li>
+                            <li><strong>Room-temperature superconductors:</strong> If achieved (big if), revolutionizes energy transmission, magnetic levitation, computing</li>
+                            <li><strong>Self-healing materials:</strong> Polymers and composites that automatically repair damage. Critical for long-duration space ops</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'Quantum Technologies',
+                        content: `<p>Beyond classical physics:</p>
+                        <ul>
+                            <li><strong>Quantum computing:</strong> Already emerging. By 2040s, could crack current encryption, simulate complex molecules, optimize logistics</li>
+                            <li><strong>Quantum sensing:</strong> Gravimeters detecting underground structures, ultra-precise navigation, medical imaging</li>
+                            <li><strong>Quantum communication:</strong> Unhackable encryption via entanglement. Corporate/military secure channels</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'For NeonVoid',
+                        content: `<div class="world-tip">
+                            <strong>💡 Worldbuilding Hook:</strong> Fusion monopolies - corporations that control He3 mining or tritium breeding effectively control energy. Quantum communication networks as corporate infrastructure - encrypted channels that only corp employees can access. Material science patents creating technological lock-in (only HydrUS graphene works with HydrUS implants, etc.).
+                        </div>`
+                    }
+                ]
+            },
+            {
+                id: 'communications',
+                icon: '📡',
+                title: 'Space Communications',
+                tagline: 'Talking across the void',
+                timeline: '2030-2060',
+                sections: [
+                    {
+                        title: 'Light-Speed Lag Problem',
+                        content: `<p>The fundamental challenge - information can't go faster than light:</p>
+                        <ul>
+                            <li><strong>Earth to Mars:</strong> 3-22 minutes one-way depending on orbit. 6-44 minute round trip</li>
+                            <li><strong>Earth to Jupiter:</strong> 35-52 minutes one-way. Over an hour round trip</li>
+                            <li><strong>Earth to Neptune:</strong> 4+ hours one-way. 8+ hour conversations</li>
+                            <li><strong>No FTL workaround:</strong> This is physics. Any NeonVoid tech has to account for lag</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'Laser Communications',
+                        content: `<p>The future of space comms:</p>
+                        <ul>
+                            <li><strong>Optical links:</strong> Lasers carrying data at 10-100 Gbps vs radio's 10-100 Mbps. Tight beams = less interference</li>
+                            <li><strong>Relay networks:</strong> Orbital relay stations creating "optical mesh" across solar system. Reduces pointing requirements</li>
+                            <li><strong>Adaptive optics:</strong> Compensating for atmospheric distortion on planetary links</li>
+                            <li><strong>Already testing:</strong> NASA's LCRD (Laser Communications Relay Demonstration) operational 2023</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'Dealing with Lag',
+                        content: `<p>Realistic communication patterns in your world:</p>
+                        <ul>
+                            <li><strong>Asynchronous by default:</strong> Messages, not real-time calls. Video letters, not FaceTime</li>
+                            <li><strong>Predictive AI assistants:</strong> AI models of people respond instantly, real person confirms/corrects later</li>
+                            <li><strong>Autonomous authority:</strong> Local managers with decision-making power. Earth HQ sends strategic directives, not tactical commands</li>
+                            <li><strong>Information markets:</strong> Valuable intel has timestamp. Stale data = worthless data. Speed premium on fresh news</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'For NeonVoid',
+                        content: `<div class="world-tip">
+                            <strong>💡 Worldbuilding Hook:</strong> Uplink as the comms monopoly is HUGE. They control the relay network, set the prices, prioritize traffic. Corporate messages in fast lane, personal comms throttled. Communication blackouts as punishment. Rival corps literally can't coordinate without going through Uplink infrastructure. Independent settlers with spotty access, days-old news. AI "proxies" speaking for executives during lag.
+                        </div>`
+                    }
+                ]
+            }
+        ];
+
+        function createTechCards() {
+            const grid = document.getElementById('techGrid');
+            techData.forEach(tech => {
+                const card = document.createElement('div');
+                card.className = 'tech-card';
+                card.innerHTML = `
+                    <div class="tech-icon">${tech.icon}</div>
+                    <div class="tech-title">${tech.title}</div>
+                    <div class="tech-tagline">${tech.tagline}</div>
+                `;
+                card.addEventListener('click', () => showDetail(tech));
+                grid.appendChild(card);
+            });
+        }
+
+        function showDetail(tech) {
+            const panel = document.getElementById('detailPanel');
+            
+            // Deactivate all cards
+            document.querySelectorAll('.tech-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Activate clicked card
+            event.currentTarget.classList.add('active');
+            
+            let sectionsHTML = '';
+            tech.sections.forEach(section => {
+                sectionsHTML += `
+                    <div class="tech-section">
+                        <h3>${section.title}</h3>
+                        ${section.content}
+                    </div>
+                `;
+            });
+            
+            panel.innerHTML = `
+                <button class="close-btn" onclick="closeDetail()">✕ Close</button>
+                <div class="detail-title">
+                    <span>${tech.icon}</span>
+                    <span>${tech.title}</span>
+                    <span class="timeline-badge">${tech.timeline}</span>
+                </div>
+                ${sectionsHTML}
+            `;
+            
+            panel.classList.add('active');
+            panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function closeDetail() {
+            const panel = document.getElementById('detailPanel');
+            panel.classList.remove('active');
+            document.querySelectorAll('.tech-card').forEach(card => {
+                card.classList.remove('active');
+            });
+        }
+
+        // Initialize
+        createTechCards();
+    </script>
+</body>
+</html>
