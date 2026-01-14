@@ -1,0 +1,211 @@
+# Indie Game Marketing: SEO, AEO, and Discovery Strategies
+
+Research compiled for NeonVoid / The Dark Void marketing planning.
+
+---
+
+## Key Terms
+
+| Term | Definition |
+|------|------------|
+| **SEO** (Search Engine Optimization) | Getting found in traditional search results (Google, Bing) through keywords, backlinks, and content structure |
+| **AEO** (Answer Engine Optimization) | Getting cited in AI-generated answers (ChatGPT, Perplexity, Google AI Overviews) through clear, authoritative, question-answering content |
+| **GEO** (Generative Engine Optimization) | Creating content designed to be source material for generative AI |
+| **ASO** (App Store Optimization) | The equivalent of SEO for Steam, mobile stores, etc. |
+
+---
+
+## Steam-Specific Optimization
+
+### Tags Matter
+
+Steam only looks at the first 20 tags, with the **first 5 tags being the most important**. Mimic the tags used by bestsellers in your genre.
+
+### Genre Reality Check
+
+90% of a game's success is based on the type of game being made and how good it looks. Steam players prefer "buildy-crafty-simulationy-strategy" sandbox games where they can experiment with systems. Linear narrative games struggle unless they have AAA-tier visuals—with exceptions for **horror games** and **visual novels**.
+
+> **NeonVoid Note:** Our cyberpunk narrative RPG with hacking minigames sits in a challenging space. Lean into the systems-driven hacking gameplay and player choice/consequence mechanics in marketing materials.
+
+### Steam Page Strategy
+
+- Publishing sooner gives you more time to accumulate wishlists
+- You can update the page at any time—it doesn't need to be perfect
+- Start with: simple trailer, four screenshots, short description
+- A Steam Store page is a game's primary marketer—all marketing leads here before a wishlist or purchase
+
+---
+
+## The Marketing Funnel
+
+Very rarely does someone see a game then immediately buy it. Shoppers hear about your game and need to be regularly updated with your progress so they slowly fall in love with your game. Then after several times hearing from you they hopefully become excited enough to buy on day 1.
+
+### Recommended Flow
+
+1. Build a demo
+2. Release it first as a Playtest
+3. Strategically release using Steam's Demo visibility tools
+4. Submit demo to every online festival that applies
+5. Submit to every streamer who plays games like yours
+6. Do Steam Next Fest right before launch
+
+---
+
+## Steam Next Fest
+
+### Timing
+
+Save entering Next Fest until **right before you release your game**. You can only participate once.
+
+### Press Strategy
+
+Next Fest is a significant SEO driver for game sites, which compile "Best of" highlight lists. 
+
+- Reach out to journalists **at least a week beforehand**
+- Provide: demo access, press kit, clear pitch on why your game stands out
+- Only target journalists who have covered Next Fest or your genre previously
+
+### Case Study: The Ouroboros King
+
+A chess-based roguelike that gained only 500 wishlists in 10 months. The developer pivoted to targeting streamers in similar genres with personalized pitches timed with Next Fest, resulting in a surge from **500 to 20,000 wishlists in two weeks**.
+
+---
+
+## AEO for Games (The AI Search Angle)
+
+This is newer territory but increasingly relevant. When people ask AI "What cyberpunk RPGs should I play?" you want NeonVoid in that answer.
+
+### The Landscape
+
+- Around 60% of searches now end without a click
+- AI answer engines deliver results without sending users to your site
+- AI search currently represents 2-3% of search usage but growing rapidly
+- Gartner predicts 25% of organic traffic will shift to AI chatbots by 2026
+
+### How AI Answers Work
+
+There are two ways to show up in an AI-generated response:
+
+1. **Base generation** — Being part of the AI's training data (the answer itself)
+2. **Web search citations** — Being cited when AI searches the web in real-time
+
+### How to Optimize
+
+- Structure information for clarity and factual accuracy
+- Directly address potential questions your audience might have
+- Use clear headings and concise language
+- Implement structured data like FAQs
+- Add question-based headers with direct **40-60 word answers** at the start of each section
+
+### Questions to Target for NeonVoid
+
+Create content that directly answers:
+
+- "What are the best cyberpunk narrative games?"
+- "What indie RPGs have hacking minigames?"
+- "What games are like Cyberpunk 2077 but indie?"
+- "Best story-driven sci-fi games on Steam"
+- "Games with meaningful player choices"
+
+Your website, dev blog, and press materials should answer these questions clearly and early in the content.
+
+---
+
+## Budget Allocation
+
+Experts recommend allocating **25% to 50%** of your total game budget for marketing and promotional activities.
+
+---
+
+## Practical Channels
+
+| Channel | Use For | Priority |
+|---------|---------|----------|
+| **Steam Page** | Primary conversion point—polish this first | Critical |
+| **Discord** | Community building, beta access, feedback loops | High |
+| **TikTok** | Short-form video, devlogs, hooks (1 second to capture attention) | High |
+| **YouTube** | Trailers, longer devlogs, gameplay footage | Medium |
+| **Streamers** | Targeted outreach to genre-relevant creators | High |
+| **Reddit** | Genre-specific subreddits, be helpful first before promoting | Medium |
+| **Press/Festivals** | Next Fest, genre-specific online festivals | High |
+| **Website/Blog** | SEO/AEO home base, press kit hosting, dev updates | Medium |
+
+---
+
+## Trailer Best Practices
+
+- Open with gameplay instead of logos
+- Show gameplay within the first 5 seconds
+- Use montages of short clips instead of long uncut footage
+- Fast music and pacing
+- Most viewers stop watching within 30 seconds
+
+### Structure
+
+1. Hook
+2. Gameplay montage
+3. Key features
+4. Call to action
+
+### Platform-Specific
+
+- **TikTok:** You have 1 second to hook—no fade from black, immediate action
+- **Steam:** Less harsh but still prioritize immediate engagement
+
+---
+
+## Community Building
+
+A thriving community is one of the most powerful assets in indie game marketing. Loyal players help increase reach through word-of-mouth and provide valuable feedback.
+
+### Platforms to Establish
+
+- Discord server (primary)
+- Steam Community page
+- Subreddit (if warranted by size)
+
+### Engagement Tactics
+
+- Answer questions regularly
+- Share updates and behind-the-scenes content
+- Organize events: AMAs, contests, playtests
+- Be present and responsive
+
+---
+
+## Key Resources
+
+| Resource | URL | Use For |
+|----------|-----|---------|
+| How To Market A Game | howtomarketagame.com | Gold standard indie marketing advice |
+| HTMAG Festivals List | howtomarketagame.com/festivals | Find relevant online festivals |
+| Indieformer | indieformer.com | Steam page optimization guides |
+| Steam Tags Docs | Official Steam documentation | Tagging strategy |
+| Big Games Machine | biggamesmachine.com | Next Fest strategy guides |
+
+---
+
+## Action Items for NeonVoid
+
+- [ ] Set up Steam page as early as possible (even with placeholder content)
+- [ ] Research and select first 5 tags carefully based on successful similar games
+- [ ] Create press kit with key art, screenshots, trailer, fact sheet
+- [ ] Build Discord server for community
+- [ ] Identify 20-30 streamers who cover similar games for outreach list
+- [ ] Create FAQ content targeting AI search queries
+- [ ] Plan festival submission calendar
+- [ ] Determine Next Fest timing based on release window
+
+---
+
+## Notes
+
+- Marketing is cyclical—repeat the demo/festival/streamer loop throughout development
+- The game's genre and visual style determine ~90% of financial success
+- Wishlists are a pre-launch metric that influences algorithmic visibility
+- Personalized streamer outreach beats mass emails
+- Be present in communities before you need something from them
+
+---
+
+*Last updated: January 2026*
